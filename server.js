@@ -1,60 +1,60 @@
-const http = require('http');
-const fs = require('fs');
-const _ = require('lodash');
+// const http = require('http');
+// const fs = require('fs');
+// const _ = require('lodash');
 
-//lodash
+// //lodash
 
 
-const server = http.createServer((req, res) => {
-    const num = _.random(0,20);
-    console.log(num);
+// const server = http.createServer((req, res) => {
+//     const num = _.random(0,20);
+//     console.log(num);
 
-    const greet = _.once(() => {
-        console.log('Hello');
-    });
-    greet();
-    greet();
+//     const greet = _.once(() => {
+//         console.log('Hello');
+//     });
+//     greet();
+//     greet();
 
-    console.log(req.url, req.method);
+//     console.log(req.url, req.method);
 
-    res.setHeader('Content-Type', 'text/html');
+//     res.setHeader('Content-Type', 'text/html');
 
-    let path = './views/';
+//     let path = './views/';
 
-    switch(req.url) {
-        case '/':
-            path += 'index.html';
-            res.statusCode = 200;
-            break;
+//     switch(req.url) {
+//         case '/':
+//             path += 'index.html';
+//             res.statusCode = 200;
+//             break;
 
-        case '/about':
-            path += 'about.html';
-            break;
+//         case '/about':
+//             path += 'about.html';
+//             break;
 
-        case '/about-me':
-            res.statusCode = 301;
-            res.setHeader('Location', './about');
-            res.end();
-            break;
+//         case '/about-me':
+//             res.statusCode = 301;
+//             res.setHeader('Location', './about');
+//             res.end();
+//             break;
 
-        default:
-            path += '404.html';
-            res.statusCode = 404;
-            break;
-    }
+//         default:
+//             path += '404.html';
+//             res.statusCode = 404;
+//             break;
+//     }
 
-    fs.readFile(path, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.end();
-        } else {
-            // res.write(data);
-            res.end(data);
-        }
-    });
+//     fs.readFile(path, (err, data) => {
+//         if (err) {
+//             console.log(err);
+//             res.end();
+//         } else {
+//             // res.write(data);
+//             res.end(data);
+//         }
+//     });
 
-});
+// });
 
-server.listen(3000, 'localhost', () => {
-    console.log('listening for request on port 3000');
-});
+// server.listen(3000, 'localhost', () => {
+//     console.log('listening for request on port 3000');
+// });
